@@ -1,0 +1,34 @@
+# =====================================================================
+# BARBATOS AGENT OS — Configuration des Dépendances
+# =====================================================================
+
+# --- Core & Architecture Asynchrone ---
+pydantic>=2.5.0
+pyyaml>=6.0.1
+psutil>=5.9.8
+requests>=2.31.0
+aiohttp>=3.9.3
+rich>=13.7.1
+
+# --- API Locale & Web HUD Dashboard ---
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+websockets>=12.0
+
+# --- Contrôle Système & Automation ---
+watchdog>=4.0.0
+paramiko>=3.4.0
+Pillow>=10.2.0
+
+# --- Audio & Voix (Local) ---
+pyttsx3>=2.90
+# Optionnels pour micro et STT :
+# SpeechRecognition>=3.10.1
+# sounddevice>=0.4.6
+# faster-whisper>=1.0.0
+
+# --- Vision IA (Local) ---
+# Optionnels pour vision par webcam & modèles :
+# opencv-python>=4.9.0
+# numpy>=1.26.4
+# ultralytics>=8.1.0
