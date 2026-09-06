@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BARBATOS — Local Autonomous AI Operating System</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hud-container">
+    <!-- Top HUD Bar -->
+    <header class="hud-header">
+      <div class="logo-area">
+        <span class="glitch-text" data-text="BARBATOS">BARBATOS</span>
+        <span class="version-tag">OS v1.0.0 // LOCAL AI</span>
+      </div>
+      
+      <div class="status-indicator-wrapper">
+        <div id="status-ring" class="status-ring idle"></div>
+        <div class="status-texts">
+          <span class="label">AGENT STATUS</span>
+          <span id="agent-state" class="state-value">IDLE</span>
+        </div>
+      </div>
+
+      <div class="hud-meta">
+        <div>UPTIME: <span id="uptime-val">0s</span></div>
+        <div>MODEL: <span id="model-val">LLaMA 3.1</span></div>
+        <div>MODE: <span class="badge-offline">100% OFFLINE</span></div>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="hud-grid">
+      <!-- Left Panel: Telemetry & Hardware -->
+      <section class="hud-panel telemetry-panel">
+        <h2 class="panel-title">TELEMETRY & HARDWARE</h2>
+        
+        <div class="gauge-container">
+          <div class="gauge-label">
+            <span>CPU LOAD</span>
+            <span id="cpu-percent">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="cpu-bar" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="gauge-container">
+          <div class="gauge-label">
+            <span>RAM USAGE</span>
+            <span id="ram-percent">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="ram-bar" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+          <div class="sub-label" id="ram-detail">0 / 0 GB</div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-row"><span>TASKS COMPLETED:</span> <strong id="tasks-count">0</strong></div>
+          <div class="info-row"><span>BATTERY:</span> <strong id="battery-status">N/A</strong></div>
+          <div class="info-row"><span>VISION CORE:</span> <strong class="text-green">ONLINE</strong></div>
+          <div class="info-row"><span>AUDIO LISTENER:</span> <strong class="text-cyan">READY</strong></div>
+        </div>
+
+        <h2 class="panel-title" style="margin-top: 25px;">QUICK MACROS</h2>
+        <div class="macro-buttons">
+          <button class="hud-btn" onclick="runMacro('quick_diagnostic')">RUN DIAGNOSTIC</button>
+          <button class="hud-btn" onclick="runMacro('capture_desktop')">SCREENSHOT</button>
+          <button class="hud-btn" onclick="executeQuick('Vérifie l\'espace disque libre sur mon PC')">DISK AUDIT</button>
+        </div>
+      </section>
+
+      <!-- Center Panel: Neural Chat & Terminal Stream -->
+      <section class="hud-panel terminal-panel">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">NEURAL COGNITION TERMINAL // REAL-TIME EVENT STREAM</span>
+        </div>
+
+        <div id="terminal-feed" class="terminal-feed">
+          <div class="log-line system">[SYSTEM] BARBATOS Kernel initialized. EventBus ready.</div>
+          <div class="log-line system">[AGENT] Ready to receive voice or text directives.</div>
+        </div>
+
+        <form id="command-form" class="command-input-area" onsubmit="sendCommand(event)">
+          <div class="input-wrapper">
+            <span class="prompt-symbol">❯</span>
+            <input type="text" id="user-input" placeholder="Donnez un ordre à BARBATOS (ex: 'Diagnostique mon PC et prends un screenshot')..." autocomplete="off" />
+          </div>
+          <button type="submit" class="hud-submit-btn">EXECUTE</button>
+        </form>
+      </section>
+
+      <!-- Right Panel: Tools & Operations -->
+      <section class="hud-panel tools-panel">
+        <h2 class="panel-title">SYSTEM TOOLS REGISTRY</h2>
+        <div id="tools-list" class="tools-list">
+          <div class="tool-item">Chargement des outils...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

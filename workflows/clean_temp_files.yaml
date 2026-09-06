@@ -1,0 +1,18 @@
+name: "Nettoyage & Capture de Sécurité"
+description: "Vérifie les fichiers temporaires et prend un instantané de sécurité"
+version: "1.0"
+steps:
+  - id: "step_screenshot"
+    name: "Capture d'écran d'audit"
+    tool: "take_screenshot"
+    args: {}
+    continue_on_error: true
+
+  - id: "step_log"
+    name: "Enregistrement dans la mémoire persistante"
+    tool: "remember_fact"
+    args:
+      key: "dernier_audit_securite"
+      value: "Audit et capture complétés avec succès."
+      category: "maintenance"
+    continue_on_error: true

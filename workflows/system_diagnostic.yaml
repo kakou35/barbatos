@@ -1,0 +1,24 @@
+name: "Diagnostic Complet du Système"
+description: "Audit du matériel, des processus et de l'espace disque avec notification de rapport"
+version: "1.0"
+steps:
+  - id: "step_hardware"
+    name: "Lecture des métriques matérielles"
+    tool: "get_hardware_status"
+    args: {}
+    continue_on_error: false
+
+  - id: "step_processes"
+    name: "Inspection des processus lourds"
+    tool: "list_running_apps"
+    args:
+      limit: 5
+    continue_on_error: false
+
+  - id: "step_notify"
+    name: "Envoi notification utilisateur"
+    tool: "show_toast_notification"
+    args:
+      title: "BARBATOS Diagnostic"
+      message: "Audit système complété avec succès."
+    continue_on_error: true

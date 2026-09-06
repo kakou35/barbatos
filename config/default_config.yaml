@@ -1,0 +1,59 @@
+# =====================================================================
+# Configuration Système Globale — BARBATOS AGENT OS
+# =====================================================================
+
+system:
+  name: "BARBATOS"
+  version: "1.0.0"
+  log_level: "INFO"
+  locale: "fr_FR"
+  auto_start_web_hud: true
+  web_hud_port: 8088
+  web_hud_host: "127.0.0.1"
+
+ai:
+  provider: "ollama"               # "ollama" ou "openai_compatible"
+  ollama_endpoint: "http://localhost:11434"
+  model: "llama3.1:latest"
+  vision_model: "llama3.2-vision:latest"  # fallback si disponible
+  temperature: 0.2
+  max_tokens: 2048
+  timeout_seconds: 120
+  react_max_steps: 8
+
+memory:
+  sqlite_path: "data/barbatos_memory.db"
+  short_term_window: 15           # Nombre de tours conversationnels en contexte direct
+  long_term_enabled: true
+
+audio:
+  enabled: true
+  wake_word: "barbatos"
+  wake_word_aliases: ["barbatos", "hey barbatos", "robot", "assistant"]
+  energy_threshold: 400
+  pause_threshold: 1.2
+  tts_engine: "native"            # "native" (SAPI5/pyttsx3)
+  voice_speed: 165
+  voice_volume: 1.0
+
+vision:
+  enabled: true
+  camera_index: 0
+  frame_width: 640
+  frame_height: 480
+  detection_confidence: 0.5
+  snapshot_dir: "data/snapshots"
+
+security:
+  allow_arbitrary_commands: true
+  dangerous_commands_blacklist:
+    - "format "
+    - "rmdir /s /q c:\\"
+    - "rm -rf /"
+    - "del /f /s /q c:\\windows"
+  require_confirmation_for_destructive: true
+
+network:
+  api_enabled: true
+  api_secret_key: "barbatos-local-secret-token"
+  ssh_default_port: 22
